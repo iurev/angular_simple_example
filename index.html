@@ -15,7 +15,7 @@
         <thead>
           <tr>
             <th ng-repeat="title in titles track by $index">
-              <div class="cell" ng-bind="title" ng-click="sort($index)">
+              <div class="cell" ng-bind="title|uppercase" ng-click="sort($index)">
               </div>
             </th>
           </tr>

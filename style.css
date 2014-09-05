@@ -1,9 +1,6 @@
 tr:nth-child(even) {
   background-color: rgb(235, 233, 233);
 }
-thead {
-  text-transform: uppercase;
-}
 .cell {
   text-align: center;
   display: table;
