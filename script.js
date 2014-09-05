@@ -1,7 +1,7 @@
 /*global angular, console, _*/
 angular.module('tcsApp', [])
-  .controller('tcsController', ['$scope', '$filter', '$interval',
-    function($scope, $filter, $interval) {
+  .controller('tcsController', ['$scope', '$filter', '$timeout',
+    function($scope, $filter, $timeout) {
       $scope.values = [
         ['первый', 'второй', 'третий', 'четвертый'],
         [23, 54, 21, 54],
@@ -14,20 +14,20 @@ angular.module('tcsApp', [])
       var sortByCol = null;
 
       $scope.up = function(row, col) {
-        $scope.clickCoords = { row: row, col: col }
+        $scope.clickCoords = { row: row, col: col };
 
-        $interval(function() {
+        $timeout(function() {
           var i, values = $scope.values, length = values[row].length;
 
           for (i = 0; i < length; i++) {
             values[row][i] += 1;
           }
           values[row][col] += 1;
-        }, 100, 1);
+        }, 100);
 
-        $interval(function() {
+        $timeout(function() {
           $scope.clickCoords = {};
-        }, 200, 1)
+        }, 200);
       };
 
       $scope.sort = function(col) {
@@ -47,10 +47,10 @@ angular.module('tcsApp', [])
 
       $scope.mustSlideUp = function(row, col) {
         return ($scope.clickCoords.row === row);
-      }
+      };
 
       $scope.mustIncreaseFont = function(row, col) {
         return (($scope.clickCoords.row === row) && ($scope.clickCoords.col === col));
-      }
+      };
     }
   ]);
